@@ -1,19 +1,22 @@
 class ObjectValidator {
-  constructor(validators) {
-    this.validators = validators;
+  constructor() {
+    this.validators = {};
   }
 
-  isValid(data) {
-    if (typeof data !== 'object' || data === null) {
-      return false;
-    }
+  shape(schema) {
+    this.validators = schema;
+    return this;
+  }
 
-    for (const key in this.validators) {
-      if (!this.validators[key].isValid(data[key])) {
-        return false;
+  isValid(user) {
+    let isValid = true;
+    Object.entries(this.validators).forEach(([field, validator]) => {
+      if (!validator.isValid(user[field])) {
+        isValid = false;
       }
-    }
-    return true;
+    });
+    return isValid;
   }
 }
+
 export default ObjectValidator;

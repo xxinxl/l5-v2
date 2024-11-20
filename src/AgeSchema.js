@@ -1,10 +1,12 @@
 class AgeValidator {
   isValid(age) {
-    return typeof age === 'number' && !isNaN(age);
+    return typeof age === 'number' && !Number.isNaN(age) && age >= 0;
   }
 
-  isAdult(age) {
-    return this.isValid(age) && age >= 18;
+  isAdult() {
+    return {
+      isValid: (age) => this.isValid(age) && age >= 18,
+    };
   }
 }
 

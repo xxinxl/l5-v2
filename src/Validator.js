@@ -12,9 +12,7 @@ class Validator {
   }
 
   user() {
-    return {
-      shape: (fields) => new ObjectValidator(fields),
-    };
+    return new ObjectValidator();
   }
 }
 

@@ -1,4 +1,4 @@
-class EmailSchema {
+class EmailValidator {
   constructor() {
     this.minLength = 0;
     this.maxLength = Infinity;
@@ -20,4 +20,4 @@ class EmailSchema {
   }
 }
 
-export default EmailSchema;
+export default EmailValidator;
